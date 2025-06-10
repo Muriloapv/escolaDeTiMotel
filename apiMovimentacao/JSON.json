@@ -18,26 +18,42 @@
 // Entrada:
 [
 	{
-	"idQuarto": 3,
-	"tempoEstimado": 2,
-	"valorHoraQuarto": 50.0,
+	"idQuarto": 101,
+	"tempoEstimado": 3,
+	"valorHoraQuarto": 50,
 	"veiculo": "ABC-1234",
-	"usuario": "Carlos Souza"
+	"usuario": "Murilo",
+	"itensConsumidos": [
+			{ "nome": "Refrigerante", "quantidade": 2, "preco": 5 },
+			{ "nome": "Preservativo", "quantidade": 1, "preco": 10 }
+		]
 	}
 ]
 //Saida
 [
 	{
 		"id": 1,
-		"status": "Em utilização",
-		"idQuarto": 3,
-		"tempoEstimado": 2,
-		"tempoContratado": 2,
+		"status": "Ocupado",
+		"idQuarto": 101,
+		"tempoEstimado": 3,
+		"tempoContratado": 3,
 		"valorHoraQuarto": 50,
-		"valorTotal": 100,
+		"itensConsumidos": [
+			{
+				"nome": "Refrigerante",
+				"quantidade": 2,
+				"preco": 5
+			},
+			{
+				"nome": "Preservativo",
+				"quantidade": 1,
+				"preco": 10
+			}
+		],
+		"valorTotal": 150,
 		"veiculo": "ABC-1234",
-		"usuario": "Carlos Souza",
-		"entrada": "2025-06-10T19:44:09.963Z",
+		"usuario": "Murilo",
+		"entrada": "2025-06-10T20:46:50.098Z",
 		"saida": null
 	}
 ]

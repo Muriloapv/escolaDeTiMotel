@@ -7,21 +7,23 @@ const listarMovimentacao = ( req, res ) => {
 
 //Registra entrada do cliente no motel - POST
 const registrarEntrada = ( req, res ) => {
-   const { idQuarto, 
+    const { idQuarto, 
            tempoEstimado,
            valorHoraQuarto,
+           itensConsumidos  = [],
            veiculo, 
            usuario } = req.body;   
           
     const tempoContratado = tempoEstimado;   
     const valorTotal      = ( tempoContratado * valorHoraQuarto )   
-
+    
     const novoCheckIn = { id: listMovimentacao.length +1,
-                          status: "Em utilização",
+                          status: "Ocupado",
                           idQuarto,
                           tempoEstimado,
                           tempoContratado,
                           valorHoraQuarto,
+                          itensConsumidos ,
                           valorTotal,
                           veiculo,
                           usuario,
