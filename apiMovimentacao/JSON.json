@@ -1,0 +1,43 @@
+// Quarto
+[
+	{
+		"id": 1,
+		"nome": "Suite master ",
+		"descricao": "contem banheira, vista...",
+		"valorHora": 89.99
+	},
+	{
+		"id": 2,
+		"nome": "Suite pobre ",
+		"descricao": "contem patente, vista pra cozinha...",
+		"valorHora": 9.99
+	}
+]
+
+// Movimentação
+// Entrada:
+[
+	{
+	"idQuarto": 3,
+	"tempoEstimado": 2,
+	"valorHoraQuarto": 50.0,
+	"veiculo": "ABC-1234",
+	"usuario": "Carlos Souza"
+	}
+]
+//Saida
+[
+	{
+		"id": 1,
+		"status": "Em utilização",
+		"idQuarto": 3,
+		"tempoEstimado": 2,
+		"tempoContratado": 2,
+		"valorHoraQuarto": 50,
+		"valorTotal": 100,
+		"veiculo": "ABC-1234",
+		"usuario": "Carlos Souza",
+		"entrada": "2025-06-10T19:44:09.963Z",
+		"saida": null
+	}
+]

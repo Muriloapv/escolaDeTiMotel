@@ -10,6 +10,6 @@ app.use( '/api', movimentacaoRouter );
 app.use( '/api', quartoRouter );
 
 app.listen( PORT, () => {
-    console.log( `http://localhost:/api/movimentacao` );
+    console.log( `http://localhost:${PORT}/api/movimentacao` );
     console.log( `http://localhost:${PORT}/api/quartos` );
 });

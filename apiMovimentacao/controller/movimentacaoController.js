@@ -11,15 +11,18 @@ const registrarEntrada = ( req, res ) => {
            tempoEstimado,
            valorHoraQuarto,
            veiculo, 
-           usuario } = req.body;    
+           usuario } = req.body;   
+          
+    const tempoContratado = tempoEstimado;   
+    const valorTotal      = ( tempoContratado * valorHoraQuarto )   
 
     const novoCheckIn = { id: listMovimentacao.length +1,
                           status: "Em utilização",
                           idQuarto,
                           tempoEstimado,
-                          tempoContratado: tempoEstimado,
+                          tempoContratado,
                           valorHoraQuarto,
-                          valorTotal: ( valorHoraQuarto * tempoContratado ),
+                          valorTotal,
                           veiculo,
                           usuario,
                           entrada: new Date(),
@@ -32,15 +35,15 @@ const registrarEntrada = ( req, res ) => {
 //realizar checkout - put
 const registrarSaida = ( req, res ) => {
 
-    const { id,
-            status,
+    const { id } = req.params;
+    const { status,
             tempoContratado,
             valorHoraQuarto,
             valorTotal } = req.body;    
     
     const index = listMovimentacao.findIndex( listMovimentacao.id === parseInt( id ));
 
-    if ( index !== id ){
+    if ( index !== -1 ){
         listMovimentacao[ index ].status          = "Finalizado";
         listMovimentacao[ index ].tempoContratado = functionValidaTempo;
         listMovimentacao[ index ].valotTotal      = functionValidaComanda;
