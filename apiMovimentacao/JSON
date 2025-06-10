@@ -1,0 +1,17 @@
+// Quarto
+[
+	{
+		"id": 1,
+		"nome": "Suite master ",
+		"descricao": "contem banheira, vista...",
+		"valorHora": 89.99
+	},
+	{
+		"id": 2,
+		"nome": "Suite pobre ",
+		"descricao": "contem patente, vista pra cozinha...",
+		"valorHora": 9.99
+	}
+]
+
+Movimentação

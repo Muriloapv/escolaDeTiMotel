@@ -1,4 +1,4 @@
-T.I 
+-T.I 
 tempo de trabalho
 09/06 - 8:35 a 9:02
 
@@ -18,6 +18,12 @@ Funcionais:
 Não funcionais:
 -> Registrar horario de entrada
 -> Registrar funcionario que fez a "venda"
+
+createMovimentacao
+- id quarto
+- tempoEstimado
+- placaVeiculo
+-
 
 2 - Saída
 Funcionais:
@@ -78,5 +84,30 @@ Stacks
 - NodeJS
 - Adonis
 - JavaScript
+- Swagger
 
 - api google calender
+
+A fazer
+
+Crud Quarto
+- POST   - criar quarto ( id, Nome, descrição, valor hora )
+- GET    - listar todos os quartos
+- PUT    - Atualizar informações
+- DELETE - Não vai ser utilizado, vamos apenas setar exclusão ( para manter historico )
+
+Crud Itens
+- POST   - criar item ( id, Nome, descrição, valor custo, valor venda, quantidade comprada )
+- GET    - listar todos os itens
+- PUT    - Atualizar informações
+- PATCH  - Atualizar saldo em estoque
+- DELETE - Não vai ser utilizado, vamos apenas setar exclusão ( para manter historico )
+
+
+
+- GET  - listar movimentação ( passar parametro de tempo )
+- POST - CheckIn
+- PUT  - CheckOut
+
+
+

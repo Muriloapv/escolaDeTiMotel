@@ -82,7 +82,7 @@ Cadastro de produtos
 
 Stacks 
 - NodeJS
-- Adonis
+future - Adonis
 - JavaScript
 - Swagger
 
