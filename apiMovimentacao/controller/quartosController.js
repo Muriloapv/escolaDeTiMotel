@@ -5,7 +5,7 @@ const listarQuartos = ( req, res ) => {
     res.json( listQuartos );
 }
 
-//Create quarto = POST
+//Create quarto = POST ( deve ser adicionado img em outro momento)
 const criarQuarto = ( req, res ) => {
     const { nome, descricao, valorHora } = req.body;
 
@@ -19,4 +19,8 @@ const criarQuarto = ( req, res ) => {
     res.status( 201 ).json ( novoQuarto );
 };
 
+// Atualizar informações sobre o quarato - PUT
+const atualizarQuarto = ( req, res ) => {
+    
+};
 module.exports = { listarQuartos, criarQuarto };

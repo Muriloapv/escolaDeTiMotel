@@ -52,15 +52,20 @@ const registrarSaida = ( req, res ) => {
 
     const { id } = req.params;
     const { statusQuarto,
-            tempoContratado,
-            valorHoraQuarto,
+            // tempoContratado,
+            // valorHoraQuarto,
+            itensConsumidos,
             valorTotal } = req.body;    
     
     const index = listMovimentacao.findIndex( quarto => quarto.id === parseInt( id ));
-
+    
+    // fechaComanda();        função responsavel por validar os itens consumidos
+    // calculaTempCheckOut(); função responsavel por realizar o calculo de tempo de permanencia 
     if ( index !== -1 ){
+        let totalComanda = fechaComanda( listMovimentacao[ index ], valorTotal ); 
+
         listMovimentacao[ index ].statusQuarto    = "Finalizado";
-        listMovimentacao[ index ].tempoContratado = functionValidaTempo;
+        // listMovimentacao[ index ].tempoContratado = functionValidaTempo;
         listMovimentacao[ index ].valotTotal      = functionValidaComanda;
         listMovimentacao[ index ].saida           = new Date();
     } else {
