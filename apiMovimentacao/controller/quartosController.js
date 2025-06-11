@@ -1,5 +1,6 @@
 let listQuartos = [];
 
+// Listar todos os quartos
 const listarQuartos = ( req, res ) => {
     res.json( listQuartos );
 }

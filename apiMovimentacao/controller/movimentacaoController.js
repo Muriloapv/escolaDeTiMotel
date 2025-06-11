@@ -1,9 +1,22 @@
 let listMovimentacao = [];
 
+
 // Lista todas as movimentações entrada/saida - GET
 const listarMovimentacao = ( req, res ) => {
     res.json ( listMovimentacao );
-}
+};
+
+// Listar as movimentações em aberto - GET
+const listarQuartosStatus = ( req, res ) => {//tornar essa função generica, recebdno ocupado ou livre
+    const { statusQuarto } = req.params.status;
+
+    const strResult =  listMovimentacao.filter( statusQ => statusQ.statusQuarto.toLowerCase() === statusQuarto.toLowerCase );
+    if ( !strResult ) {//! valida se a string está vazia
+        res.json( strResult ); 
+    } else {
+        res.status( 400 ).json ( 'Aviso: Não a quartos com esse status! ');
+    }
+};
 
 //Registra entrada do cliente no motel - POST
 const registrarEntrada = ( req, res ) => {
@@ -18,7 +31,7 @@ const registrarEntrada = ( req, res ) => {
     const valorTotal      = ( tempoContratado * valorHoraQuarto )   
     
     const novoCheckIn = { id: listMovimentacao.length +1,
-                          status: "Ocupado",
+                          statusQuarto: "Ocupado",
                           idQuarto,
                           tempoEstimado,
                           tempoContratado,
@@ -38,15 +51,15 @@ const registrarEntrada = ( req, res ) => {
 const registrarSaida = ( req, res ) => {
 
     const { id } = req.params;
-    const { status,
+    const { statusQuarto,
             tempoContratado,
             valorHoraQuarto,
             valorTotal } = req.body;    
     
-    const index = listMovimentacao.findIndex( listMovimentacao.id === parseInt( id ));
+    const index = listMovimentacao.findIndex( quarto => quarto.id === parseInt( id ));
 
     if ( index !== -1 ){
-        listMovimentacao[ index ].status          = "Finalizado";
+        listMovimentacao[ index ].statusQuarto    = "Finalizado";
         listMovimentacao[ index ].tempoContratado = functionValidaTempo;
         listMovimentacao[ index ].valotTotal      = functionValidaComanda;
         listMovimentacao[ index ].saida           = new Date();
@@ -60,4 +73,4 @@ const registrarSaida = ( req, res ) => {
 
 // Atualizar entrada, com i 
 
-module.exports = { listarMovimentacao, registrarEntrada, registrarSaida }
+module.exports = { listarMovimentacao, listarQuartosStatus, registrarEntrada, registrarSaida }

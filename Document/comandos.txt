@@ -1,0 +1,6 @@
+clear cache: npm cache clean --force
+
+caso de B.O na node_molues
+
+remove tudo : rm -rf node_modules package-lock.json
+install : npm install
