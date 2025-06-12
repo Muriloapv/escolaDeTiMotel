@@ -1,7 +1,6 @@
 const { fechaComanda } = require( '../utils/movimentacaoFunction' );
 let listMovimentacao = [];
 
-
 // Lista todas as movimentações entrada/saida - GET
 const listarMovimentacao = ( req, res ) => {
     res.json ( listMovimentacao );
@@ -9,11 +8,11 @@ const listarMovimentacao = ( req, res ) => {
 };
 
 // Listar as movimentações em aberto - GET
-const listarQuartosStatus = ( req, res ) => {//tornar essa função generica, recebdno ocupado ou livre
+const listarQuartosStatus = ( req, res ) => {
     const { statusQuarto } = req.params.status;
 
     const strResult =  listMovimentacao.filter( statusQ => statusQ.statusQuarto.toLowerCase() === statusQuarto.toLowerCase );
-    if ( !strResult ) {//! valida se a string está vazia
+    if ( !strResult ) {
         res.json( strResult ); 
     } else {
         res.status( 400 ).json ( 'Aviso: Não a quartos com esse status! ');
@@ -55,16 +54,12 @@ const registrarEntrada = ( req, res ) => {
 const registrarSaida = ( req, res ) => {
 
     const { id } = req.params;
-    const { // statusQuarto,
-            // tempoContratado,
-            // valorHoraQuarto,
+    const { // listItensConsumidosPorCliente
             // valorTotal
             itensConsumidos } = req.body;    
     
     const index = listMovimentacao.findIndex( quarto => quarto.id === parseInt( id ));
     
-    // fechaComanda();        função responsavel por validar os itens consumidos
-    // calculaTempCheckOut(); função responsavel por realizar o calculo de tempo de permanencia 
     if ( index !== -1 ){
         let listCheckOut = []
         listCheckOut = fechaComanda( listMovimentacao[ index ] ); 
@@ -80,9 +75,6 @@ const registrarSaida = ( req, res ) => {
     //#swagger.tags = ['Movimentação']
 };
 
-// Excluir movimentação - DELETE
-// const excluirMovimentacao  Não será utilizada
-
-// Atualizar entrada, com i 
+// Excluir movimentação - DELETE const excluirMovimentacao  Não será utilizada
 
 module.exports = { listarMovimentacao, listarQuartosStatus, registrarEntrada, registrarSaida }

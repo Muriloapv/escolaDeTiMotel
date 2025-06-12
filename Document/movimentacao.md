@@ -22,3 +22,47 @@ Funções do /movimentacao
 Não funcionais:
 -> Registrar horario de entrada
 -> Registrar funcionario que fez a "venda"
+
+
+// Entrada - CheckIn
+[
+	{
+	"idQuarto": 101,
+	"tempoEstimado": 3,
+	"valorHoraQuarto": 50,
+	"veiculo": "ABC-1234",
+	"usuario": "Murilo",
+	"itensConsumidos": [
+			{ "nome": "Refrigerante", "quantidade": 2, "preco": 5 },
+			{ "nome": "Preservativo", "quantidade": 1, "preco": 10 }
+		]
+	}
+]
+// Saida - CheckOut
+[
+	{
+		"id": 1,
+		"status": "Ocupado",
+		"idQuarto": 101,
+		"tempoEstimado": 3,
+		"tempoContratado": 3,
+		"valorHoraQuarto": 50,
+		"itensConsumidos": [
+			{
+				"nome": "Refrigerante",
+				"quantidade": 2,
+				"preco": 5
+			},
+			{
+				"nome": "Preservativo",
+				"quantidade": 1,
+				"preco": 10
+			}
+		],
+		"valorTotal": 150,
+		"veiculo": "ABC-1234",
+		"usuario": "Murilo",
+		"entrada": "2025-06-10T20:46:50.098Z",
+		"saida": null
+	}
+]
