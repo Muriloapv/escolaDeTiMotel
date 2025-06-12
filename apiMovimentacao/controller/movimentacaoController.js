@@ -1,9 +1,11 @@
+const { fechaComanda } = require( '../utils/movimentacaoFunction' );
 let listMovimentacao = [];
 
 
 // Lista todas as movimentações entrada/saida - GET
 const listarMovimentacao = ( req, res ) => {
     res.json ( listMovimentacao );
+    //#swagger.tags = ['Movimentação']
 };
 
 // Listar as movimentações em aberto - GET
@@ -16,6 +18,7 @@ const listarQuartosStatus = ( req, res ) => {//tornar essa função generica, re
     } else {
         res.status( 400 ).json ( 'Aviso: Não a quartos com esse status! ');
     }
+    //#swagger.tags = ['Movimentação']
 };
 
 //Registra entrada do cliente no motel - POST
@@ -45,32 +48,36 @@ const registrarEntrada = ( req, res ) => {
     };
     listMovimentacao.push ( novoCheckIn );
     res.status( 201 ).json( novoCheckIn );
+    //#swagger.tags = ['Movimentação']
 };
 
 //realizar checkout - put
 const registrarSaida = ( req, res ) => {
 
     const { id } = req.params;
-    const { statusQuarto,
+    const { // statusQuarto,
             // tempoContratado,
             // valorHoraQuarto,
-            itensConsumidos,
-            valorTotal } = req.body;    
+            // valorTotal
+            itensConsumidos } = req.body;    
     
     const index = listMovimentacao.findIndex( quarto => quarto.id === parseInt( id ));
     
     // fechaComanda();        função responsavel por validar os itens consumidos
     // calculaTempCheckOut(); função responsavel por realizar o calculo de tempo de permanencia 
     if ( index !== -1 ){
-        let totalComanda = fechaComanda( listMovimentacao[ index ], valorTotal ); 
+        let listCheckOut = []
+        listCheckOut = fechaComanda( listMovimentacao[ index ] ); 
 
         listMovimentacao[ index ].statusQuarto    = "Finalizado";
-        // listMovimentacao[ index ].tempoContratado = functionValidaTempo;
-        listMovimentacao[ index ].valotTotal      = functionValidaComanda;
+        listMovimentacao[ index ].tempoContratado = listCheckOut.tempoTotalQuarto;
+        listMovimentacao[ index ].valotTotal      = listCheckOut.valorTotalQuarto;
         listMovimentacao[ index ].saida           = new Date();
+        res.json ( listMovimentacao[index] );
     } else {
         res.status( 400 ).json ( 'Erro ao finalizar atendimento! ');
     }
+    //#swagger.tags = ['Movimentação']
 };
 
 // Excluir movimentação - DELETE

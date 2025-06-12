@@ -10,9 +10,18 @@ function calculaTempCheckOut ( hEntrada, hSaida, valorHora ) {
 - apresentar valor total a ser pago
 */
 function fechaComanda( list ){
-    for ( let i = 0; list.count -1; i++ ){
+    //primeiro calcula o valor gasto com quarto
+    const horarioEntrada = list.entrada;
+    const horarioSaida   = new Date();
 
-    }
-
-     
+    let tempoTotalQuarto   = ( horarioSaida - horarioEntrada       );
+    tempoTotalQuarto       = Math.ceil( tempoTotalQuarto / 1000/ 60 / 60 );
+    
+    const valorTotalQuarto = ( tempoTotalQuarto * list.valorHora   );
+    return { 
+             tempoTotalQuarto, 
+             valorTotalQuarto
+    };
 }
+
+module.exports = { fechaComanda };
