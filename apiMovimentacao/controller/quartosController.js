@@ -3,6 +3,7 @@ let listQuartos = [];
 // Listar todos os quartos
 const listarQuartos = ( req, res ) => {
     res.json( listQuartos );
+    //#swagger.tags = ['Quartos']
 }
 
 //Create quarto = POST ( deve ser adicionado img em outro momento)
@@ -17,6 +18,7 @@ const criarQuarto = ( req, res ) => {
     };
     listQuartos.push       ( novoQuarto );
     res.status( 201 ).json ( novoQuarto );
+    //#swagger.tags = ['Quartos']
 };
 
 // Atualizar informações sobre o quarato - PUT
@@ -34,6 +36,7 @@ const atualizarQuarto = ( req, res ) => {
     } else {
         res.statu( 400 ).json({ mensagem: 'Quarto não encontrado.'})
     }
+    //#swagger.tags = ['Quartos']
 };
 
 // Atualizar status de locação do quarto - PATCH
@@ -44,11 +47,12 @@ const atualizarStatusQuarto = ( req, res ) => {
     const index = listQuartos.findIndex( quarto => quarto.id === parseInt( id ) );
     if ( index !== -1 ){
         listQuartos[ index ].statusDisponibilidade = statusDisponibilidade;
-        
+
         res.json( listQuartos[ index ] );
     } else {
         res.statu( 400 ).json({ mensagem: 'Quarto não encontrado.'})
     }
+    //#swagger.tags = ['Quartos']
 }
 
 module.exports = { listarQuartos, criarQuarto, atualizarQuarto,atualizarStatusQuarto };

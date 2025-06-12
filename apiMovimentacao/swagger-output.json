@@ -11,16 +11,24 @@
     "http"
   ],
   "paths": {
-    "/api/movimentacao": {
+    "/motel/movimentacao": {
       "get": {
+        "tags": [
+          "Movimentação"
+        ],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/motel/movimentacao/checkin": {
       "post": {
+        "tags": [
+          "Movimentação"
+        ],
         "description": "",
         "parameters": [
           {
@@ -58,29 +66,11 @@
         }
       }
     },
-    "/api/movimentacao/{status}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "status",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/api/movimentacao/{id}": {
+    "/motel/movimentacao/{id}/checkout": {
       "put": {
+        "tags": [
+          "Movimentação"
+        ],
         "description": "",
         "parameters": [
           {
@@ -95,13 +85,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "statusQuarto": {
-                  "example": "any"
-                },
                 "itensConsumidos": {
-                  "example": "any"
-                },
-                "valorTotal": {
                   "example": "any"
                 }
               }
@@ -109,14 +93,20 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "400": {
             "description": "Bad Request"
           }
         }
       }
     },
-    "/api/quartos": {
+    "/motel/quartos": {
       "get": {
+        "tags": [
+          "Quartos"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -125,6 +115,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Quartos"
+        ],
         "description": "",
         "parameters": [
           {
@@ -153,8 +146,11 @@
         }
       }
     },
-    "/api/quartos/{id}": {
+    "/motel/quartos/{id}": {
       "put": {
+        "tags": [
+          "Quartos"
+        ],
         "description": "",
         "parameters": [
           {
@@ -189,6 +185,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Quartos"
+        ],
         "description": "",
         "parameters": [
           {
