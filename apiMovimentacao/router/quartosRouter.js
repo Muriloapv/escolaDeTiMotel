@@ -6,6 +6,6 @@ const quartoController = require( '../controller/quartosController' );
 router.get   ( '/quartos'     , quartoController.listarQuartos       );
 router.post  ( '/quartos'     , quartoController.criarQuarto         );
 router.put   ( '/quartos/:id' , quartoController.atualizarQuarto     );
-router.patch ( '/quartos/:id', quartoController.atualizarStatusQuarto);
+router.patch ( '/quartos/:id' , quartoController.atualizarStatusQuarto);
 
 module.exports = router;
