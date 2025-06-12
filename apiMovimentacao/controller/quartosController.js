@@ -44,12 +44,11 @@ const atualizarStatusQuarto = ( req, res ) => {
     const index = listQuartos.findIndex( quarto => quarto.id === parseInt( id ) );
     if ( index !== -1 ){
         listQuartos[ index ].statusDisponibilidade = statusDisponibilidade;
+        
         res.json( listQuartos[ index ] );
     } else {
         res.statu( 400 ).json({ mensagem: 'Quarto não encontrado.'})
     }
 }
 
-
-
-module.exports = { listarQuartos, criarQuarto };
+module.exports = { listarQuartos, criarQuarto, atualizarQuarto,atualizarStatusQuarto };
