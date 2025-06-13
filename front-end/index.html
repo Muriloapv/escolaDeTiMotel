@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Movimentação de Quartos</title>
+</head>
+<body>
+  <h1>Status de Quartos</h1>
+  <div id="resultado"></div>
+
+  <script>
+    // URL da API local
+    const apiUrl = 'http://localhost:8080/motel/movimentacao';
+
+    // Função para formatar a data
+    function formatarData(dataISO) {
+      if (!dataISO) return '---';
+      const data = new Date(dataISO);
+      return data.toLocaleString('pt-BR');
+    }
+
+    // Chamada à API
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na resposta da API');
+        }
+        return response.json();
+      })
+      .then(movimentacoes => {
+        const resultado = document.getElementById('resultado');
+        resultado.innerHTML = '';
+
+        movimentacoes.forEach(mov => {
+          resultado.innerHTML += `
+            <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+              <p><strong>Quarto:</strong> ${mov.idQuarto}</p>
+              <p><strong>Status:</strong> ${mov.statusQuarto}</p>
+              <p><strong>Veículo:</strong> ${mov.veiculo}</p>
+              <p><strong>Usuário:</strong> ${mov.usuario}</p>
+              <p><strong>Entrada:</strong> ${formatarData(mov.entrada)}</p>
+              <p><strong>Saída:</strong> ${formatarData(mov.saida)}</p>
+              <p><strong>Valor total:</strong> R$ ${mov.valorTotal.toFixed(2)}</p>
+            </div>
+          `;
+        });
+      })
+      .catch(error => {
+        document.getElementById('resultado').innerHTML = '<p style="color:red;">Erro ao carregar dados.</p>';
+        console.error('Erro:', error);
+      });
+  </script>
+</body>
+</html>
